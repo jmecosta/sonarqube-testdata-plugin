@@ -1,0 +1,48 @@
+[{
+	"file": "C:\\Users\\punker76\\Documents\\GitHub\\MahApps.Metro\\MahApps.Metro\\Accent.cs",
+	"lines": [{
+		"line": "20",
+        "covered" : "true",
+		"branches": [{
+			"branch": "1",
+			"covered": "true"
+		},
+		{
+			nches": [{
+			"branch": "1",
+			"covered": "true"
+		},
+		{
+			"branch": "2",
+			"covered": "false"
+		}]
+	}]
+},
+{
+	"file": "C:\\Users\\punker76\\Documents\\GitHub\\MahApps.Metro\\MahApps.Metro\\Accent2.cs",
+	"lines": [{
+		"line": "20",
+        "covered" : "true",
+		"branches": [{
+			"branch": "1",
+			"covered": "true"
+		},
+		{
+			"branch": "2",
+			"covered": "false"
+		}]
+	},
+	{
+		"line": "21",
+        "covered" : "true",
+		"branches": [{
+			"branch": "1",
+			"covered": "true"
+		},
+		{
+			"branch": "2",
+			"covered": "false"
+		}]
+	}]
+},
+]
