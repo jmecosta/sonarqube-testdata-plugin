@@ -16,9 +16,9 @@ codition coverage is not counted at all (as in c# plugin) or all they allow you 
 Maybe this situation will change in future, however for now, it seems SonarQube folks give the responsibility to handle this behaviour to users. So when using generic coverate in 6.3 you
 must ensure all data is first merged into one single file (if you use more than one it does not work). 
 
-For that reason, this plugin introduces a new coverage format when you can specify branch ids. With this all data is initially parsed and cached and merged together. And then used per module when files have been found.
+For that reason, this plugin introduces a new coverage format were you can specify branch ids. With this all data is initially parsed and cached and merged together. And then used per module when files have been found.
 
-This method supports opencover really well, and at this moment this is the only way to collect branch/condition coverage for it. You need to use the OpenCover converter application to create the coverage json. But after this all should be cleanly displayed in Sonar.
+This method supports opencover really well, and at this moment this is the only way to collect branch/condition coverage for it. You need to use the OpenCover converter application (https://github.com/jmecsoftware/OpenCover2SonarConverter/releases) to create the coverage json. But after this all should be cleanly displayed in Sonar.
 
 ## Quickstart
 1. Setup a SonarQube instance
