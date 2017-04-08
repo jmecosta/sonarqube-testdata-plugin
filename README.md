@@ -29,7 +29,7 @@ This method supports opencover really well, and at this moment this is the only 
    
 ## Coverage Format
 
->>
+```json
 [{
 	"file": "C:\\Users\\punker76\\Documents\\GitHub\\MahApps.Metro\\MahApps.Metro\\Accent.cs",
 	"lines": [{
@@ -85,4 +85,4 @@ This method supports opencover really well, and at this moment this is the only 
 	}]
 },
 ]
-
+```
