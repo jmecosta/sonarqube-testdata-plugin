@@ -5,23 +5,28 @@
   <parent>
     <groupId>org.sonarsource.parent</groupId>
     <artifactId>parent</artifactId>
-    <version>34</version>
+    <version>46</version>
   </parent>
     
   <groupId>org.jmecsoftware.com</groupId>
   <artifactId>sonarqube-testdata-plugin</artifactId>
   <packaging>sonar-plugin</packaging>
-  <version>0.9.1-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <name>Test Data Import Plugin</name>
   <inceptionYear>2017</inceptionYear>
   <description>Imports unit test and coverage metrics into SonarQube</description>
 
   <properties>
-    <sonar.version>5.6</sonar.version>
-    <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
-    <sonar.pluginName>TestDataImporter</sonar.pluginName>
-    <sonar.pluginClass>org.jmecsoftware.plugins.tests.TestDataImporterPlugin</sonar.pluginClass>
+      <license.title>SonarQube XML Plugin</license.title>
+      <license.year>2018</license.year>
+      <license.owner>Jorge Costa</license.owner>
+      <license.header>src/license-header.txt</license.header>
+      <email>jmecosta@gmail.com</email>     
+      <sonar.version>6.7.5</sonar.version>
+      <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
+      <sonar.pluginName>TestDataImporter</sonar.pluginName>
+      <sonar.pluginClass>org.jmecsoftware.plugins.tests.TestDataImporterPlugin</sonar.pluginClass>
   </properties>
 
 
@@ -29,7 +34,7 @@
     <dependency>
       <groupId>org.sonarsource.sonarqube</groupId>
       <artifactId>sonar-plugin-api</artifactId>
-      <version>5.6</version>
+      <version>6.7.5</version>
       <scope>provided</scope>
     </dependency>
 
@@ -87,23 +92,7 @@
             <artifactId>maven-license-plugin</artifactId>
             <version>1.9.0</version>
             <configuration>
-                <header>NOTICE</header>
-                <includes>
-
-                </includes>
-                <excludes>
-                                      <exclude>**/*.xml</exclude>
-                    <exclude>**/*.java</exclude>
-                    <exclude>**/.*/**</exclude>
-                    <exclude>target/**</exclude>
-                    <exclude>**/AndroidManifest.xml</exclude>
-                </excludes>
-                <properties>
-                    <year>2013</year>
-                    <name>John Ericksen</name>
-                </properties>
-                <useDefaultExcludes>true</useDefaultExcludes>
-                <strictCheck>false</strictCheck>
+                <header>src/license-header.txt</header>
             </configuration>
             <executions>
                 <execution>

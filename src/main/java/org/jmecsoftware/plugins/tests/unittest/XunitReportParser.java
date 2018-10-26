@@ -1,3 +1,22 @@
+/*
+ * SonarQube XML Plugin
+ * Copyright (C) 2017-2018 Jorge Costa
+ * mailto:info AT sonarsource DOT com
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 package org.jmecsoftware.plugins.tests.unittest;
 
 import java.io.File;
@@ -23,7 +42,6 @@ import javax.xml.transform.stream.StreamSource;
 import org.codehaus.staxmate.in.ElementFilter;
 import org.codehaus.staxmate.in.SMHierarchicCursor;
 import org.codehaus.staxmate.in.SMInputCursor;
-import org.sonar.api.config.Settings;
 import org.sonar.api.utils.ParsingUtils;
 import org.sonar.api.utils.log.Loggers;
 import org.jmecsoftware.plugins.tests.TestDataImporterPlugin;
@@ -31,6 +49,7 @@ import org.jmecsoftware.plugins.tests.utils.TestCase;
 import org.jmecsoftware.plugins.tests.utils.EmptyReportException;
 import org.jmecsoftware.plugins.tests.utils.StaxParser;
 import org.jmecsoftware.plugins.tests.utils.StaxParser.XmlStreamHandler;
+import org.sonar.api.config.Configuration;
 
 /**
  * {@inheritDoc}
@@ -40,8 +59,12 @@ public class XunitReportParser implements ReportParser {
   
   private final String xsltURL;
 
-  public XunitReportParser(Settings settings) {
-    xsltURL = settings.getString(TestDataImporterPlugin.XSLT_URL_KEY);
+  public XunitReportParser(Configuration settings) {
+    if (settings.get(TestDataImporterPlugin.XSLT_URL_KEY).isPresent()) {
+      xsltURL = settings.get(TestDataImporterPlugin.XSLT_URL_KEY).get();
+    } else {
+      xsltURL = null;
+    }    
   }
 
   XunitReportParser() {

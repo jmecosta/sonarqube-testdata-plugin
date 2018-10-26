@@ -1,3 +1,22 @@
+/*
+ * SonarQube XML Plugin
+ * Copyright (C) 2017-2018 Jorge Costa
+ * mailto:info AT sonarsource DOT com
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3 of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
 package org.jmecsoftware.plugins.tests.coverage;
 
 import java.io.File;
@@ -9,29 +28,29 @@ import org.sonar.api.batch.sensor.Sensor;
 import org.sonar.api.batch.sensor.SensorContext;
 import org.sonar.api.batch.sensor.SensorDescriptor;
 import org.sonar.api.batch.sensor.coverage.NewCoverage;
-import org.sonar.api.config.Settings;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.jmecsoftware.plugins.tests.TestDataImporterPlugin;
 
 import org.jmecsoftware.plugins.tests.utils.ReportUtils;
+import org.sonar.api.config.Configuration;
 
 public class CoverageSensor implements Sensor {
 
   private final CoverageCache cache;
   private static final Logger LOG = Loggers.get(CoverageSensor.class);
  
-  private final Settings settings;
+  private final Configuration settings;
 
-  public CoverageSensor(Settings settings, CoverageCache cache) {
+  public CoverageSensor(Configuration settings, CoverageCache cache) {
     this.settings = settings;
     this.cache = cache;
   }
 
   @Override
   public void describe(SensorDescriptor descriptor) {
-    descriptor.name("Unit Test Coverage Report")
-      .requireProperty(TestDataImporterPlugin.COV_REPORT_PATHS_KEY);
+    descriptor.name("Unit Test Coverage Report").global()
+      .onlyWhenConfiguration(conf -> conf.hasKey(TestDataImporterPlugin.COV_REPORT_PATHS_KEY));
   }
 
   @Override
